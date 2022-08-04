@@ -2,8 +2,9 @@ import { makeStyles } from "@mui/styles";
 
 export default makeStyles((theme) => ({
   container: {
+    width: '100%',
+    position: 'sticky',
     bottom: 0,
-    position: "absolute",
     padding: theme.spacing(3),
     backgroundColor:
       theme.palette.mode === "light"
