@@ -3,8 +3,9 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import useStyles from "./style";
 import News from './News';
+import useStyles from "./style";
+
 
 const Home = () => {
   const classes = useStyles();

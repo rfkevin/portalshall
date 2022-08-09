@@ -46,6 +46,7 @@ const Header = () => {
                 to="/#news"
                 color="text.primary"
                 underline="none"
+                variant="h6"
               >
                 News
               </Typography>
@@ -56,6 +57,7 @@ const Header = () => {
                 to="/products"
                 color="text.primary"
                 underline="none"
+                variant="h6"
               >
                 Products
               </Typography>
@@ -66,6 +68,7 @@ const Header = () => {
                 to="/donation"
                 color="text.primary"
                 underline="none"
+                variant="h6"
                 sx={{ flexGrow: 1 }}
               >
                 Donations

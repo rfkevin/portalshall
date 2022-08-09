@@ -11,19 +11,18 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    /*  <PayPalScriptProvider
+  <PayPalScriptProvider
         deferLoading={true}
         options={{
           "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
           components: "buttons",
           currency: "USD",
         }}
-      >*/
+      >
         <BrowserRouter>
           <App />
         </BrowserRouter>
-        /*
-      </PayPalScriptProvider>*/
+      </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>
 );

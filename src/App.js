@@ -9,6 +9,7 @@ import Footer from "./Component/Footer/Footer";
 import Header from "./Component/Header/Header";
 import Donation from "./Pages/Donation/Donate";
 import Products from './Pages/Products/product';
+import Thanks from './Pages/Thanks/thanks';
 
 const App = () => {
   const darkMode = useSelector((state) => state.darkMode);
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/donation" element={<Donation />} />
           <Route path="/products" element={<Products/>} />
+          <Route path="/thanks" element={<Thanks/>} />
         </Routes>
         <Footer />
       </Box>
