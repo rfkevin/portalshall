@@ -10,7 +10,7 @@ import useStyles from "./style";
 const SocialFooter = () => {
   const classes = useStyles();
   return (
-    <Grid item container justifyContent="center" spacing={4}>
+    <>
       <Grid item align="center">
         <Typography variant="caption" color="text.secondary">
           Follow us
@@ -31,7 +31,7 @@ const SocialFooter = () => {
           <InstagramIcon className={classes.icons} />
         </Link>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
