@@ -1,22 +1,26 @@
 import React from "react";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import CircularProgress from '@mui/material/CircularProgress';
+import { useGetProductsQuery } from "./slice";
 
+import useStyles from "./style";
 const Products = () => {
+  const classes = useStyles();
   const {
     data: news,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetNewsQuery();
+  } = useGetProductsQuery();
   let content;
   if (isLoading) {
     content = <CircularProgress size="5em" />;
   } else if (isSuccess) {
-    content = (
-        {Object.entries(news.result)?.map(([id, data]) => (
-          //to do
-        ))}
-    );
+    console.log("sssss")
   } else if (isError) {
     console.log(error);
     content = <Typography variant="h6">{error.error.toString()}</Typography>;
