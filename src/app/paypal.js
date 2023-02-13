@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { PayPalButtons, usePayPalScriptReducer, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { createOrders, captureOrders } from "./api";
 export const ButtonWrapper = ({ currency, showSpinner, style, amount }) => {
   const navigate = useNavigate();
@@ -19,12 +19,14 @@ export const ButtonWrapper = ({ currency, showSpinner, style, amount }) => {
   return (
     <>
       {showSpinner && isPending && <div className="spinner" />}
+      <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
       <PayPalButtons
         style={style}
         disabled={false}
         forceReRender={[amount, currency, style]}
         fundingSource={undefined}
         createOrder={function (data, actions) {
+          console.log(data);
           return createOrders({ currency, amount }).then((order) => {
             return order.data.id;
           });
@@ -44,6 +46,7 @@ export const ButtonWrapper = ({ currency, showSpinner, style, amount }) => {
           });
         }}
       />
+      </PayPalScriptProvider>
       <Typography variant="body2" color="error">{message}</Typography>
     </>
   );

@@ -20,8 +20,10 @@ const News = () => {
   } = useGetNewsQuery();
   let content;
   if (isLoading) {
+    console.log("wait")
     content = <CircularProgress size="5em" />;
   } else if (isSuccess) {
+    console.log("successs")
     content = (
       <Swiper
         spaceBetween={30}
@@ -35,6 +37,7 @@ const News = () => {
       </Swiper>
     );
   } else if (isError) {
+    console.log("faill")
     console.log(error);
     content = <Typography variant="h6">{error.error.toString()}</Typography>;
   }
