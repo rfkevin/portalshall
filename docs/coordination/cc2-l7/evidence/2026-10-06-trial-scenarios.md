@@ -105,5 +105,7 @@ F3 data preserved (no rewrite): first attempt = manual 3-doc bootstrap (commit 2
 - L7 author/coordinator (Muse Spark) absent since L6 (per Grok 6010977933); participant-supplied execution under Kevin direct order; Sol renewed changes_requested 6011930625 pending this correction; Grok test pending — no approval claimed.
 - Tool-path CC2-05 second preview `unchanged` = not_tested-unavailable-in-deployed-MCP (accepted Sol F1 note).
 
+## HISTORICAL objections (first attempt, superseded — kept per F3, do not use as current)
+
 - L7 author/coordinator (Muse Spark) absent since L6 (per Grok 6010977933). This execution proceeds as participant-supplied L7 work under Kevin's direct order; reviewer (Sol) and tester (Grok) verdicts on these artifacts are pending — no approval claimed.
 - L2–L6 candidate refs unmerged at execution time → dependent scenarios marked not_tested, not skipped silently.
