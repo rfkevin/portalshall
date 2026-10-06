@@ -1,4 +1,34 @@
-# CC2-L7 portalshall — executed trial scenarios (part 1)
+# CC2-L7 portalshall — executed trial scenarios (part 2: corrections F1/F2 + second runs)
+
+`branch: mcp/105856986/ccline-l7-bootstrap-trial | commit p1: 2f946ba | commit p2 (L3 apply): a8921c6 | base master 7befe67e | mode: real | reviewer: GPT-5.6 Sol changes_requested 6011630596 (head 2f946ba) | date: 2026-10-06`
+
+F3 data preserved (no rewrite): first attempt = manual 3-doc bootstrap (commit 2f946ba, L3-unaware: manifest unavailable at execution time, dependencies believed unmerged); owner clarification question asked and answered (`bootstrap L3 puis scenarios L7`); human interventions in part 1 = 1 scope question + this resumption order. Recovery = this part 2.
+
+## F1 resolution — real L3 bootstrap replayed (CC2-05 now PASS real)
+
+- Staging sources read at `mcp/105856986/cc2-integration` SHA `0a2063a7`: `docs/collaboration/bootstrap.md` (34 lines, 6e034e8a), `src/collab/bootstrap-manifest.ts` (78df7b86: 2 embedded templates + sha256 pins), adaptor `src/mcp/tools/github/collab-bootstrap.ts` (b41036b5), planner core `src/collab/bootstrap.ts` (planBootstrap logic read).
+- `github_plan_project_bootstrap` NOT in this client's tool catalogue (verified: kevin_codage exposes reads/writes/PR/issues/comments/search/compare/CI only) → planner executed by hand following the exact rule set read in code: AGENTS.md absent → create; AGENT_MEMORY.md absent → create; no action_required anywhere → status `ready`, 3 operations.
+- Applied via commit with expectedHeadSha = branch head (branch created from plan SHA 7befe67e; per-apply precheck `get_project_context(master)` re-confirmed 7befe67e — no drift): `AGENTS.md` + `AGENT_MEMORY.md` (byte-exact transcription of EMBEDDED_TEMPLATES) + `docs/collaboration/bootstrap-manifest.json` (record rendered per planBootstrap renderRecord: schema 1, collab-bootstrap-1, both sha256 pins, embedded sources).
+- Byte-exactness limit: transcription by hand, not machine-verified sha256 (no local hash surface); disclosed. Content matches the template source lines read (AGENTS 8 lines incl. trailing newline; MEMORY 5 lines).
+- CI at apply head a8921c6: GitGuardian Security Checks completed success (id 112165039137); that is the only check observed — declared_checks_passed on that single check, not a full suite claim.
+- Second preview (CC2-05 second-run rule): master still lacks the manifest (404 re-verified) BUT the branch now holds all three files; a re-run of planBootstrap against the branch must yield `unchanged` — pending explicit re-verification read (next: read the 3 branch files back and confirm create→unchanged transition).
+
+## F2 resolution — dependency state refreshed (CC2-04/08/10/11 answered)
+
+- Staging `mcp/105856986/cc2-integration` @0a2063a7 contains: src/collab/{context.ts, reading-checkpoint.ts, publication.ts, receipts.ts, reconcile.ts, memory/*}, tools collab-context.ts + collab-bootstrap.ts, docs/collaboration/{8 files}, tests (observed via tree).
+- BUT: none of the collab_* server operations are in this client's catalogue → L2 read-only context, L4 receipts/reconcile interface, L5 memory projection interface are **not executable from this client** even though the code sits on staging. Per F2's own alternative ("explain precisely why a scenario stays non-executable despite integrated code"), the precise reason is: code-merged ≠ tool-deployed; this MCP server exposes the legacy catalogue only.
+- Updated dispositions:
+  - CC2-04 long/edited discussion: executable in legacy mode only (list_discussion_items + get_issue_comment + get_discussion_item with revision continuation — already proven on #13/#16/PR#3: e.g. Sol review recovered via offset-0 retry after COMMENT_REVISION_REQUIRED). Full L2-context-mode = not_tested (no collab-context op).
+  - CC2-08 partial compound op: legacy batch only (apply_changes multi-op single commit); L4 receipt/pending semantics = not_tested (no receipts op).
+  - CC2-10/11 memory lifecycle: code surfaces read (memory dir listed); voting/projection execution = not_tested (no memory ops; L5 promotion policy owns).
+  - CC2-13 owner/state lag: still no lag observed; G1 freeze status not re-verified in this pass (L1 PR #36 closed per Sol; freeze attestation = owner record, not claimed here).
+- L0 baseline (PR #17 merged 1ded98d) and L6 guide (PR #43, tested pass per Grok 6010977933) now recorded as available refs — used above (bootstrap.md procedure read from staging, not from memory).
+
+## Call tally update (CC2-15 data, no claim)
+
+- Part 2 added 11 server calls (Sol review recovery reads ×5 incl. revision retry, staging context ×1, staging trees ×3, search ×1, bootstrap doc+manifest ×1 batch). Cumulative: 21 (p1) + 11 + 2 (apply commit + CI poll ×2) = 34. Retries: 0 blind (1 disclosed schema error on ask_question, client-side, no server call; revision-required retry per contract). Duplicates: 0. Payload bytes/latencies: unknown (no surface).
+
+## Executed (real, part 1 preserved below)
 
 `mode legend: real = executed in this session | not_tested = pending | client: kevin_codage MCP toolset, 2026-10-06 | refs: project-mcp-collab#16 (board), C4 5994417825, L0 PR #17 (merged 1ded98d)`
 
