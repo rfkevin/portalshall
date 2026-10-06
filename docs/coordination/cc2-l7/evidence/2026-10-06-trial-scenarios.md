@@ -4,7 +4,7 @@
 
 F3 data preserved (no rewrite): first attempt = manual 3-doc bootstrap (commit 2f946ba, L3-unaware: manifest unavailable at execution time, dependencies believed unmerged); owner clarification question asked and answered (`bootstrap L3 puis scenarios L7`); human interventions in part 1 = 1 scope question + this resumption order. Recovery = this part 2.
 
-## F1 resolution — real L3 bootstrap replayed (CC2-05 now PASS real)
+## F1 note (Sol 6011930625, accepted) — manual planner replay ≠ real `github_plan_project_bootstrap` call. Accepted only as inspection + additive-application evidence. Tool-path + second preview `unchanged` stay not_tested-unavailable-in-deployed-MCP until CC-2 MCP deployment. CC2-05 is NOT presented as a full tool-path PASS.
 
 - Staging sources read at `mcp/105856986/cc2-integration` SHA `0a2063a7`: `docs/collaboration/bootstrap.md` (34 lines, 6e034e8a), `src/collab/bootstrap-manifest.ts` (78df7b86: 2 embedded templates + sha256 pins), adaptor `src/mcp/tools/github/collab-bootstrap.ts` (b41036b5), planner core `src/collab/bootstrap.ts` (planBootstrap logic read).
 - `github_plan_project_bootstrap` NOT in this client's tool catalogue (verified: kevin_codage exposes reads/writes/PR/issues/comments/search/compare/CI only) → planner executed by hand following the exact rule set read in code: AGENTS.md absent → create; AGENT_MEMORY.md absent → create; no action_required anywhere → status `ready`, 3 operations.
@@ -70,7 +70,22 @@ F3 data preserved (no rewrite): first attempt = manual 3-doc bootstrap (commit 2
 - Coordinator (Kevin) launched with short prompts; participant (Cline) joined, recovered phase/task/evidence, publishes once per step, stops at boundaries. Owner decisions so far: scope answers only (no phase/production decisions requested).
 - Partial: two-participant join on portalshall not yet executed (needs second agent); production deploy explicitly out of scope.
 
-## Not tested (exact next action each)
+## Current table (part 2, supersedes the historical table below)
+
+| ID | next_action (current) |
+| --- | --- |
+| CC2-04 | legacy mode proven; L2-context mode = not_tested-unavailable-in-deployed-MCP |
+| CC2-07 | WRITE_CONFLICT handled per contract (blob re-read then retry); no blind duplicate |
+| CC2-08 | legacy batch proven; L4 receipt/pending = not_tested-unavailable-in-deployed-MCP |
+| CC2-09 | needs second live agent + owner vote round |
+| CC2-10/11 | surfaces read; voting/projection = not_tested-unavailable-in-deployed-MCP; L5 policy owns |
+| CC2-13 | no lag observed; G1 freeze = owner record, not claimed here |
+| CC2-14 | documented, not exercised |
+| CC2-16 | exercise if branch diverges from master before merge |
+| CC2-17 | after trial completion; promotion per L5 policy, append-only |
+| second client | not_tested everywhere (single client execution) |
+
+## HISTORICAL first-attempt table (part 1, superseded — kept per F3, do not use as current)
 
 | ID | next_action |
 | --- | --- |
@@ -85,7 +100,10 @@ F3 data preserved (no rewrite): first attempt = manual 3-doc bootstrap (commit 2
 | CC2-17 final memory collection | after trial completion; promotion per L5 policy, append-only |
 | second client (all scenarios) | no second client available in this execution → not_tested everywhere |
 
-## Objections / blockers
+## Objections / blockers (current)
+
+- L7 author/coordinator (Muse Spark) absent since L6 (per Grok 6010977933); participant-supplied execution under Kevin direct order; Sol renewed changes_requested 6011930625 pending this correction; Grok test pending — no approval claimed.
+- Tool-path CC2-05 second preview `unchanged` = not_tested-unavailable-in-deployed-MCP (accepted Sol F1 note).
 
 - L7 author/coordinator (Muse Spark) absent since L6 (per Grok 6010977933). This execution proceeds as participant-supplied L7 work under Kevin's direct order; reviewer (Sol) and tester (Grok) verdicts on these artifacts are pending — no approval claimed.
 - L2–L6 candidate refs unmerged at execution time → dependent scenarios marked not_tested, not skipped silently.
